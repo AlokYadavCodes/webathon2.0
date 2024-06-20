@@ -1,0 +1,153 @@
+/* font-family: "Red Rose", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+body{
+    margin: 0;
+    overflow-x: hidden;
+}
+.auth-page{
+    background-image: url(images/login-bg.jpg);
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    background-size: cover;
+    margin-top: -30px;
+    min-height: 100vh;
+    transition: transform 0.1s ease;
+}
+.wrapper-top{
+    margin-top: 30px;
+    font-family: "Red Rose", serif;
+    height: 10;
+    font-size: 40px;
+    color: whitesmoke;
+}
+.registration-popUp{
+    background-color: #fff;
+    position: absolute;
+    width: 30%;
+    margin-left: 35%;
+    color: rgb(0, 231, 0);
+    height: 60px;
+    border-radius: 4px;
+    margin-top: 12px;
+    transform: translateY(-1000px);
+    transition: transform 0.4s ease;
+}
+.registration-popUp.duplicate{
+    color: rgb(255, 0, 0);
+}
+.registration-popUp.popUp-active{
+    transform: translateY(0);
+}
+#popUp-cancel{
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+    left: 10px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    min-height: 70vh;
+    margin-top: 40px;
+    font-family: "Red Rose", serif;
+}
+.container{
+    position: relative;
+    width: 320px;
+    height: 320px;
+    backdrop-filter: blur(20px);
+    padding-top: 16px;
+    border-radius: 16px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: rgb(255, 255, 255) 0px 2px 12px;
+    transition: height 0.3s;
+}
+.login-container{
+    transition: transform 0.16s ease;
+    width: 100%;
+}
+.registration-container{
+    position: absolute;
+    width: 100%;
+    transform: translateX(400px);
+    transition: transform 0.16s ease;
+
+}
+.container .heading{
+    font-size: 24px;
+    color: #fff;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+.inputs{
+    margin: 36px 24px 24px 24px;
+}
+.inputs input{
+    width: 100%;
+    height: 36px;
+    margin-bottom: 16px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 12px;
+    border: none;
+}
+.login-btn, .registration-btn{
+    height: 36px;
+    width: 100px;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    padding: 8px;
+}
+.alternate{
+    margin: 32px 0 0 18px;
+    font-size: 14px;
+    color: #fff;
+}
+.alternate a{
+    text-align: none;
+    color: #fff;
+}
+
+.container.active{
+    height: 365px;
+}
+
+.container.active .login-container{
+    transform: translateX(-400px);
+}
+.container.active .registration-container{
+    transform: translateX(0);
+}
+
+.website-content{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    transform: scale(0);
+    /* transform: translateX(4000px); */
+    transition: transform 0.8s ease;
+}
+
+body.website-active .auth-page{
+    /* transform: translate(-4000px); */
+    transform: scale(0);
+}
+body.website-active .website-content{
+    /* transform: translateX(0); */
+    transform: scale(1);
+}
