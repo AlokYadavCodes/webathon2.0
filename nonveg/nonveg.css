@@ -130,8 +130,6 @@ body{
     overflow: hidden;
     min-width: 200px;
     width: 20vw;
-    min-height: 385px;
-    transition: height 0.2s ease;
     height: 385px;
     background-color: antiquewhite;
     margin: 18px;
@@ -173,34 +171,7 @@ body{
     border: none;
     background-color: rgba(91, 91, 189, 0.767);
 }
-#share-option{
-    font-size: 26px;
-    height: 32px;
-    width: 16vw;
-    /* background-color: rgb(175, 153, 153); */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin: .7vw 0vw; */
-    gap: 3px;
-    position: relative;
-    top:-160px;
-    left: 65px;
-    padding: 10px 25px;
-    border-radius: 8px;
-    /* color:rgba(91, 91, 189, 0.767) ; */
-    /* z-index: 5; */
-    transform: scale(0);
-    transition: scale 0.3s ease;
-}
-#share-option i{
-    display: inline-block;
-    color: white;
-}
 
-#share-option.active{
-    transform: scale(1);
-}
 /* review styling */
 .review-page{
     transform: scale(0);

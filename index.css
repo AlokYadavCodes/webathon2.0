@@ -31,6 +31,7 @@ body{
 .popUp{
     background-color: #fff;
     position: sticky;
+    top: 8px;
     width: 30%;
     margin-left: 35%;
     color: rgb(0, 231, 0);

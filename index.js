@@ -31,7 +31,12 @@ const registeredUsers=JSON.parse(localStorage.getItem('registeredUsers'))?? []
 const registrationBtn=document.querySelector('.registration-btn')
 registrationBtn.addEventListener('click', (e)=>{
     e.preventDefault()
-    if(!(registrationUsername.value && registrationEmail.value && registrationPassword.value)) showPopUp("Fill all fields !")
+    if(!(registrationUsername.value && registrationEmail.value && registrationPassword.value)){
+        // console.log("empty field")
+        popUpdiv.classList.add('duplicate')
+        showPopUp("Fill all fields !")
+        return
+    } 
     const newUser={
         username: `${registrationUsername.value}`,
         email: `${registrationEmail.value}`,
@@ -63,9 +68,11 @@ const loginBtn=document.querySelector('.login-btn')
 
 loginBtn.addEventListener('click', (e)=>{
     e.preventDefault()
+    let loggedUserName=null
     let validUser=false
     for (const user of registeredUsers){
         if (user.email===loginEmail.value && user.password===loginPassword.value){
+            loggedUserName=user.username
             validUser=true
             break
         }
@@ -73,8 +80,10 @@ loginBtn.addEventListener('click', (e)=>{
     if(validUser){
         loginEmail.value=''
         loginPassword.value=''
+        localStorage.setItem("loggedUserName",loggedUserName)
         activateWebsite()
     } else{
+        popUpdiv.classList.add('duplicate')
         showPopUp("Invalid login details")
     }
 })
@@ -184,4 +193,12 @@ searchBar.addEventListener('input',()=>{
 const card1=document.querySelector('.card1')
 card1.addEventListener('click',()=>{
     window.location.href = "../veg/veg.html";
+})
+const card2=document.querySelector('.card2')
+card2.addEventListener('click',()=>{
+    window.location.href = "../nonveg/nonveg.html";
+})
+const card3=document.querySelector('.card3')
+card3.addEventListener('click',()=>{
+    window.location.href = "../vegan/vegan.html";
 })

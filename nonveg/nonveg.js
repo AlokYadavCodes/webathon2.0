@@ -1,4 +1,3 @@
-
 // pop up
 
 // const popUpdiv=document.querySelector('.popUp')
@@ -17,28 +16,21 @@
 // pop up ends
 
 
+
 const dishes=document.querySelector('.dishes')
 
 function generateDishes(){
     let dishesInnerHtml=''
-    for(let i=0; i<dishesArray.length; i++){
+    for(let i=0; i<nonvegDishes.length; i++){
     dishesInnerHtml+=`<div class="dish">
                 <div class="img-container">
-                    <img src=${dishesArray[i].img} alt="">
+                    <img src=${nonvegDishes[i].img} alt="">
                 </div>
-                <div class="dish-name"> ${dishesArray[i].name}
+                <div class="dish-name"> ${nonvegDishes[i].name}
 
                 </div>
                 <div class="action-btn">
                     <button onclick="generateReviewPage(${i})" id="show-reviews">Reviews</button>
-                    <button id="share">Share</button>
-                    </div>
-                    <div id="share-option">
-                       <a href="https://web.whatsapp.com/"> <i class="fa-brands fa-whatsapp"></i></a>
-                       <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a> 
-                       <a href="https://x.com/?logout=1718962533377"> <i class="fa-brands fa-x-twitter"></i></a> 
-                        <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook"></i></a> 
-                    </div>
                 </div>
             </div>`
     }
@@ -79,9 +71,9 @@ function generateReviewPage(i){
     
     reviewPage.innerHTML+=`<div class="dish-details">
             <div class="img-container">
-                <img src=${dishesArray[i].img} alt="">
+                <img src=${nonvegDishes[i].img} alt="">
             </div>
-            <div class="dish-name">${dishesArray[i].name}</div>
+            <div class="dish-name">${nonvegDishes[i].name}</div>
         </div>
         <div class="review-container">
             <div class="title">Add your review: </div>
@@ -102,7 +94,7 @@ function generateReviewPage(i){
 
 function generateAllReviewInnerHtml(i){
     let allReviewsInnerHtml='';
-    dishesArray[i].reviews.forEach((review)=>{
+    nonvegDishes[i].reviews.forEach((review)=>{
         allReviewsInnerHtml+=`<div class="review">
                 <div class="img-and-name">
                     <img src=${review.profile_url} alt="">
@@ -142,8 +134,8 @@ function addReview(i){
         review: userFeedback,
         profile_url: userImage,
     }
-    dishesArray[i].reviews.unshift(newReview)
-    localStorage.setItem('dishesArray',JSON.stringify(dishesArray))
+    nonvegDishes[i].reviews.unshift(newReview)
+    localStorage.setItem('nonvegDishes',JSON.stringify(nonvegDishes))
     generateReviewPage(i)
 }
 
@@ -180,15 +172,11 @@ function addDish(){
         img: dishPic,
         reviews: [],
     }
-    dishesArray.unshift(newDish)
-    localStorage.setItem('dishesArray',JSON.stringify(dishesArray))
+    nonvegDishes.unshift(newDish)
+    localStorage.setItem('nonvegDishes',JSON.stringify(nonvegDishes))
     reloadPage()
 }
 
 function reloadPage(){
     window.location.reload()
 }
-
-document.querySelector('#share').addEventListener('click',()=>{
-    document.querySelector('#share-option').classList.toggle('active')
-})
