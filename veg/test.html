@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dishes</title>
+  <style>
+    /* Add your CSS styles for the cards and buttons here */
+  </style>
+</head>
+<body>
+  <div id="dishes"></div>
+
+  <script>
+    const dishesArray = [
+      // Your dishes data here (replace with actual data)
+      {
+        name: "Paneer Tikka",
+        img: "https://images.fittrapi.com/tr:w-1024,pr-true,q-60/5287daf8-db97-4ee2-a193-6a8933c39d3c.jpeg",
+        reviews: [
+          // Review details
+        ],
+      },
+      // ... other dishes
+    ];
+
+    const dishesElement = document.getElementById('dishes');
+
+    if (dishesElement) {
+      dishesArray.forEach((dish) => {
+        const dishCard = document.createElement('div');
+        dishCard.classList.add('dish-card');
+
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('img-container');
+        const img = document.createElement('img');
+        img.src = dish.img;
+        img.alt = dish.name;
+        imgContainer.appendChild(img);
+
+        const dishInfo = document.createElement('div');
+        dishInfo.classList.add('dish-info');
+        const dishName = document.createElement('h3');
+        dishName.textContent = dish.name;
+        dishInfo.appendChild(dishName);
+
+        const button = document.createElement('button');
+        button.textContent = 'Details'; // Change text if needed
+        button.addEventListener('click', () => {
+          showDetails(dish); // Pass the entire dish object
+        });
+
+        dishInfo.appendChild(button);
+        dishCard.appendChild(imgContainer);
+        dishCard.appendChild(dishInfo);
+
+        dishesElement.appendChild(dishCard);
+      });
+    } else {
+      console.error("Error: Could not find element with ID 'dishes'");
+    }
+
+    function showDetails(dish) {
+      console.log("Details for:", dish.name);
+      // Process the dish object (e.g., display specific details)
+      // You can access other properties like dish.img, dish.reviews, etc.
+    }
+  </script>
+</body>
+</html>

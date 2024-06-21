@@ -28,23 +28,23 @@ body{
     font-size: 40px;
     color: whitesmoke;
 }
-.registration-popUp{
+.popUp{
     background-color: #fff;
-    position: absolute;
+    position: sticky;
     width: 30%;
     margin-left: 35%;
     color: rgb(0, 231, 0);
     height: 60px;
     border-radius: 4px;
     margin-top: 12px;
-    transform: translateY(-1000px);
+    transform: scale(0);
     transition: transform 0.4s ease;
 }
-.registration-popUp.duplicate{
+.popUp.duplicate{
     color: rgb(255, 0, 0);
 }
-.registration-popUp.popUp-active{
-    transform: translateY(0);
+.popUp.popUp-active{
+    transform: scale(1);
 }
 #popUp-cancel{
     display: inline-block;

@@ -8,7 +8,7 @@ if (isLoggedIn){
 const container=document.querySelector('.container')
 const registrationLink=document.querySelector('.registration-link')
 const loginLink=document.querySelector('.login-link')
-const popUpdiv=document.querySelector('.registration-popUp')
+const popUpdiv=document.querySelector('.popUp')
 
 
 registrationLink.addEventListener('click', ()=>{
