@@ -109,6 +109,8 @@ header input:focus{
 .main-search-area{
     width: calc(24px + 60vw);
     min-height: 100px;
+    max-height: 250px;
+    overflow-y: auto;
     background-color: #ffffff;
     position: absolute;
     left: calc(-12px + 20vw);
@@ -116,6 +118,12 @@ header input:focus{
     padding: 10px;
     border-radius: 8px;
     z-index: 10;
+    transition: height 0.2s ease-in-out;
+    transition: padding 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
+}
+.main-search-area::-webkit-scrollbar{
+    display: none;
 }
 .search-item{
     border-bottom: 1px solid rgb(243, 243, 243);
@@ -243,10 +251,11 @@ header input:focus{
     }
     .popUp{
         position: sticky;
-        width: 70%;
-        margin-left: 15%;
+        width: 80%;
+        margin-left: 10%;
+        padding: 8px;
         height: 45px;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     #popUp-cancel-icon{
         top: 0px;
@@ -256,5 +265,7 @@ header input:focus{
 }
 
 .hide{
-    display: none;
+    height: 0;
+    width: 0;
+    padding: 0;
 }

@@ -15,9 +15,9 @@ function generateDishes(){
                     <button id="share">Share</button>
                     </div>
                     <div id="share-option">
-                       <a href="https://web.whatsapp.com/"> <i class="fa-brands fa-whatsapp"></i></a>
-                       <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a> 
-                       <a href="https://x.com/?logout=1718962533377"> <i class="fa-brands fa-x-twitter"></i></a> 
+                        <a href="whatsapp://send?text=The%20syntax%20squad%20strikes%20again!%20Check%20out%20what%20Alok%20and%20Shivam%20came%20up%20with:%20https%3A%2F%2Fsyntaxsquadweb.vercel.app"> <i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a> 
+                        <a href="https://twitter.com/intent/tweet?text=The%20syntax%20squad%20strikes%20again!%20Check%20out%20what%20Alok%20and%20Shivam%20came%20up%20with:%20https%3A%2F%2Fsyntaxsquadweb.vercel.app/"> <i class="fa-brands fa-x-twitter"></i></a> 
                         <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook"></i></a> 
                     </div>
                 </div>
@@ -92,6 +92,11 @@ function generateAllReviewInnerHtml(i){
                 <div class="feedback">${review.review}</div>
             </div>`
     })
+    if(allReviewsInnerHtml==''){
+        allReviewsInnerHtml+=`<div class="review">
+                    <p style="font-size:2rem; ">No reviews found !</p>
+            </div>`
+    }
     return allReviewsInnerHtml
 }
 
@@ -136,11 +141,11 @@ addYourOwnDishBtn.addEventListener('click', ()=>{
 function addDish(){
     let dishPic=document.querySelector('#dish-pic').value
     if(!dishPic){
-        dishPic="https://images.fittrapi.com/tr:w-1024,pr-true,q-60/5287daf8-db97-4ee2-a193-6a8933c39d3c.jpeg"
+        dishPic="https://media.istockphoto.com/id/1077980738/photo/green-peas-or-matar-paneer-curry-recipe-served-in-a-bowl-selective-focus.jpg?s=612x612&w=0&k=20&c=SShuhVPIWBpUaJXqvdWqjPrh0AqsR6VR68GInZlyw6Y="
     }
     const dishName=document.querySelector('#dish-name').value
     if(!dishName){
-        alert("Please Enter the dish name")
+        showPopUp("red", "Please Enter the dish name !")
         return
     }
     const newDish={

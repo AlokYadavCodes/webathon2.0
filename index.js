@@ -25,10 +25,42 @@ const registeredUsers=JSON.parse(localStorage.getItem('registeredUsers'))?? []
 const registrationBtn=document.querySelector('.registration-btn')
 registrationBtn.addEventListener('click', (e)=>{
     e.preventDefault()
-    if(!(registrationUsername.value && registrationEmail.value && registrationPassword.value)){
-        showPopUp("red", "Fill all fields !")
+    const minLength = 6;
+    const minLowerCase = 1;
+    const minUpperCase = 1;
+    const minNumber = 1;
+    const minSymbol = 1;
+    if(!registrationUsername.value.trim()){
+        showPopUp("red", "Username cannot be empty !")
         return
-    } 
+    } else if (!registrationEmail.value || !registrationEmail.value.trim()) {
+        showPopUp ("red", "Email address cannot be empty !");
+        return
+    } else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(registrationEmail.value)) {
+        showPopUp("red", "Invalid email format !");
+        return
+    } else if (!registrationPassword.value || !registrationPassword.value.trim()) {
+        showPopUp("red", "Password cannot be empty");
+        return
+    } else if (registrationPassword.value.length < minLength) {
+        showPopUp("red", "Password must be at least 6 characters long") ;
+        return
+    } else {
+        const hasLowerCase = /[a-z]/.test(registrationPassword.value);
+        const hasUpperCase = /[A-Z]/.test(registrationPassword.value);
+        const hasNumber = /[0-9]/.test(registrationPassword.value);
+        const hasSymbol = /[^a-zA-Z0-9 ]/.test(registrationPassword.value);
+    
+        const charTypeCount = hasLowerCase + hasUpperCase + hasNumber + hasSymbol;
+    
+        if (charTypeCount < (minLowerCase + minUpperCase + minNumber + minSymbol)) {
+          showPopUp("red", "Use uppercase, lowercase, number and symbol in password") ;
+          return
+        } else if (registrationPassword.value.toLowerCase() === registrationUsername.value.toLowerCase()) {
+          showPopUp("red", "Password cannot be the same as your username !");
+          return
+        }
+    }
     const newUser={
         username: `${registrationUsername.value}`,
         email: `${registrationEmail.value}`,
@@ -42,7 +74,7 @@ registrationBtn.addEventListener('click', (e)=>{
         }
     }
     if(isAlready){
-        showPopUp("red", "Duplicate registration !")
+        showPopUp("red", "Username already exists !")
     } else{
         showPopUp("green", "Registration Successfull!")
         registeredUsers.push(newUser)
@@ -75,60 +107,6 @@ loginBtn.addEventListener('click', (e)=>{
     } else{
         showPopUp("red", "Invalid login details")
     }
-})
-
-
-
-// search functionality
-const searchArr = [
-    "Butter Chicken",
-    "Dosa",
-    "Saag Paneer",
-    "Biryani",
-    "Vada Pav",
-    "Naan",
-    "Palak Paneer",
-    "Chole Bhature",
-    "Samosa",
-    "Masala Dosa",
-    "Dal Makhani",
-    "Tandoori Chicken",
-    "Aloo Gobi",
-    "Idli",
-    "Samosa Chaat",
-    "Pav Bhaji",
-    "Gulab Jamun",
-    "Chicken Tikka Masala",
-    "Rogan Josh",
-    "Aloo Tikki",
-    "Keema Naan",
-    "Filter Coffee",
-    "Jalebi",
-    "Rajma Chawal",
-    "Litti Chokha",
-    "Pesarattu",
-    "Pongal",
-    "Uttapam",
-    "Chicken 65",
-    "Fish Curry"
-  ];
-  
-const searchBar=document.querySelector('#main-search')
-const mainSearchElement=document.querySelector('.main-search-area')
-searchBar.addEventListener('input',()=>{
-    let inputText=searchBar.value.toUpperCase()
-    mainSearchElement.innerHTML=''
-    if(!inputText){
-        mainSearchElement.classList.add('hide')
-        return
-    }
-    mainSearchElement.classList.remove('hide')
-    searchArr.forEach((val)=>{
-        if(val.toUpperCase().includes(inputText)){
-            mainSearchElement.innerHTML+=`<div class="search-item">${val}</div>`
-        }
-    })
-
 })
 
 
