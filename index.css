@@ -19,7 +19,7 @@ body{
     background-size: cover;
     margin-top: -30px;
     min-height: 100vh;
-    transition: transform 0.1s ease;
+    transition: transform 0.2s ease-in-out;
 }
 .wrapper-top{
     margin-top: 30px;
@@ -27,38 +27,6 @@ body{
     height: 10;
     font-size: 40px;
     color: whitesmoke;
-}
-.popUp{
-    background-color: #fff;
-    position: sticky;
-    top: 8px;
-    width: 30%;
-    margin-left: 35%;
-    color: rgb(0, 231, 0);
-    height: 60px;
-    border-radius: 4px;
-    margin-top: 12px;
-    transform: scale(0);
-    transition: transform 0.4s ease;
-}
-.popUp.duplicate{
-    color: rgb(255, 0, 0);
-}
-.popUp.popUp-active{
-    transform: scale(1);
-}
-#popUp-cancel{
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-    top: 3px;
-    left: 10px;
-}
-
-.center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .wrapper{
     min-height: 70vh;
@@ -141,7 +109,8 @@ body{
     top: 0;
     transform: scale(0);
     /* transform: translateX(4000px); */
-    transition: transform 0.8s ease;
+    transition: transform 0.2s ease-in-out;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body.website-active .auth-page{
@@ -151,4 +120,18 @@ body.website-active .auth-page{
 body.website-active .website-content{
     /* transform: translateX(0); */
     transform: scale(1);
+}
+
+@media screen and (max-width:500px) {
+    .wrapper-top{
+        text-align: center;
+        font-size: 30px;
+        color: whitesmoke;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        border-radius: 32px 8px 32px 8px;
+        margin: 50px 8px 0 8px;
+    }
+    .wrapper{
+        margin-top: -70px;
+    }
 }

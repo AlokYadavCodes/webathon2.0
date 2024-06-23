@@ -1,22 +1,3 @@
-// pop up
-
-// const popUpdiv=document.querySelector('.popUp')
-// const PopUpMessage=document.querySelector('#PopUpMessage')
-// function showPopUp(message){
-//     PopUpMessage.innerHTML=message
-//     popUpdiv.classList.add('popUp-active')
-// }
-
-// const popUpcancelBtn=document.querySelector('#popUp-cancel')
-// popUpcancelBtn.addEventListener('click', popUpCancel)
-// function popUpCancel(){
-//     popUpdiv.classList.remove('popUp-active')
-// }
-
-// pop up ends
-
-
-
 const dishes=document.querySelector('.dishes')
 
 function generateDishes(){
@@ -27,10 +8,18 @@ function generateDishes(){
                     <img src=${nonvegDishes[i].img} alt="">
                 </div>
                 <div class="dish-name"> ${nonvegDishes[i].name}
-
+                    <div class="name-gradient"></div>
                 </div>
                 <div class="action-btn">
                     <button onclick="generateReviewPage(${i})" id="show-reviews">Reviews</button>
+                    <button id="share">Share</button>
+                    </div>
+                    <div id="share-option">
+                       <a href="https://web.whatsapp.com/"> <i class="fa-brands fa-whatsapp"></i></a>
+                       <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a> 
+                       <a href="https://x.com/?logout=1718962533377"> <i class="fa-brands fa-x-twitter"></i></a> 
+                        <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook"></i></a> 
+                    </div>
                 </div>
             </div>`
     }
@@ -106,19 +95,6 @@ function generateAllReviewInnerHtml(i){
     return allReviewsInnerHtml
 }
 
-
-// send button auto click on enter
-
-// const feedbackElement=document.querySelector('#user-feedback')  // already declared above
-// console.log(feedbackElement)
-// feedbackElement.addEventListener('keypress', handleKeyPress)
-// function handleKeyPress(event) {
-//     console.log("hello")
-//     if (event.key === 'Enter') {
-//       button.click();
-//     }
-// }
-
 function addReview(i){
     let userImage= document.querySelector('#user-image').value
     if (!userImage){
@@ -126,7 +102,7 @@ function addReview(i){
     } 
     const userFeedback=document.querySelector('#user-feedback').value
     if(!userFeedback){
-        alert("Please enter your feedback !")
+        showPopUp("red", "Please enter your feedback !")
         return
     }
     const newReview={
@@ -180,3 +156,7 @@ function addDish(){
 function reloadPage(){
     window.location.reload()
 }
+
+document.querySelector('#share').addEventListener('click',()=>{
+    document.querySelector('#share-option').classList.toggle('active')
+})

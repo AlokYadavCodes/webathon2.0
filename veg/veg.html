@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="../footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="veg.css">
+    <link rel="stylesheet" href="../categories.css">
     <title>veg</title>
 </head>
 <body>
+    <div class="popUp center">
+        <h2 class="popUpmsgContainer center"> <span id="PopUpMessage">popup message</span> <span id="popUp-cancel-icon" class="material-symbols-outlined">close</span>
+    </div>
     <div class="wrapper">
         <header>
             <div id="nav">
@@ -19,29 +22,34 @@
                     <a href="">home</a>
                     <a href="">about</a>
                     <a href="">care</a>
-                    <a id="logout-btn">Log out</a>
+                    <a id="logout-btn">Logout</a>
                 </div>
             </div>
             <h2>Zomato</h2>
             <h3>Discover the best food & drinks in Prayagraj</h3>
-           <div class="input-container">
-            <span class="material-symbols-outlined">search</span>
-            <input id="main-search" type="text" placeholder="Search for recipes and food items">
-           </div>
+            <div class="input-container">
+                <div class="search-icon-container">
+                    <span class="material-symbols-outlined">search</span>
+                </div>
+                <input id="main-search" type="text" placeholder="Search for recipes and food items">
+            </div>
         </header>
-
-        <div class="popUp center">
-            <h2 class="popUpmsgContainer"> <span id="PopUpMessage">popup message</span> <span id="popUp-cancel" class="material-symbols-outlined">close</span>
+        <div class="main-search-area hide">
         </div>
         <div class="dishes-container">
             <div class="title">Veg Dishes</div>
-            <p>Explore curated lists of top restaurants, cafes, pubs, and bars in Lucknow, based on trends</p>
+            <p>Get Vegetarian delivery, fast. Easy online ordering and delivery from Vegetarian restaurants near you.</p>
             <div class="dishes">
                 
             </div>
             <div class="addDishContainer">
     
             </div>
+        </div>
+        <div class="video-container">
+            <video autoplay loop muted width="100%">
+              <source src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/delicious-food-banner-template-design-cd3994e39458960f4f33e73b8c60edb9_screen.mp4?ts=1645769305" type="video/mp4">
+            </video>
         </div>
     </div>
     
@@ -50,15 +58,15 @@
     </div>
 
     <!-- footer -->
-    <div id="footer">
+    <footer>
         <h2>Zomato</h2>
         <div id="contexts">
             <div class="context">
                 <h1>About Zomato</h1>
-            <h3>Who we are</h3>
-            <h3>Blog</h3>
-            <h3>Work with Us</h3>
-            <h3>Contact us</h3>
+                <h3>Who we are</h3>
+                <h3>Blog</h3>
+                <h3>Work with Us</h3>
+                <h3>Contact us</h3>
             </div>
             <div class="context">
                 <h1>For Restaurants</h1>
@@ -72,12 +80,12 @@
                 <a href="#"><ion-icon name="logo-google"></ion-icon></a>
                 <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
             </div>
-            </div>
-            
         </div>
+    </footer>
 
 </div>
     <script src="../data/data.js"></script>
+    <script src="../header.js"></script>
     <script src="veg.js"></script>
 </body>
 </html>

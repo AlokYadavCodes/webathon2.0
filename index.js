@@ -1,23 +1,17 @@
-let isLoggedIn=JSON.parse(localStorage.getItem('isLoggedIn')) ?? false
-if (isLoggedIn){
-    activateWebsite()
-} else{
-    deactivateWebsite();
-}
+
 
 const container=document.querySelector('.container')
 const registrationLink=document.querySelector('.registration-link')
 const loginLink=document.querySelector('.login-link')
-const popUpdiv=document.querySelector('.popUp')
 
 
 registrationLink.addEventListener('click', ()=>{
-    popUpCancel()
+    removePopUp()  // if active
     container.classList.add('active')
 })
 
 loginLink.addEventListener('click', ()=>{
-    popUpCancel()
+    removePopUp()  // if active
     container.classList.remove('active')
 })
 
@@ -32,9 +26,7 @@ const registrationBtn=document.querySelector('.registration-btn')
 registrationBtn.addEventListener('click', (e)=>{
     e.preventDefault()
     if(!(registrationUsername.value && registrationEmail.value && registrationPassword.value)){
-        // console.log("empty field")
-        popUpdiv.classList.add('duplicate')
-        showPopUp("Fill all fields !")
+        showPopUp("red", "Fill all fields !")
         return
     } 
     const newUser={
@@ -50,11 +42,9 @@ registrationBtn.addEventListener('click', (e)=>{
         }
     }
     if(isAlready){
-        popUpdiv.classList.add('duplicate')
-        showPopUp("Duplicate registration")
+        showPopUp("red", "Duplicate registration !")
     } else{
-        popUpdiv.classList.remove('duplicate')
-        showPopUp("Registration Successfull!")
+        showPopUp("green", "Registration Successfull!")
         registeredUsers.push(newUser)
         localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
     }
@@ -83,55 +73,10 @@ loginBtn.addEventListener('click', (e)=>{
         localStorage.setItem("loggedUserName",loggedUserName)
         activateWebsite()
     } else{
-        popUpdiv.classList.add('duplicate')
-        showPopUp("Invalid login details")
+        showPopUp("red", "Invalid login details")
     }
 })
 
-
-//  popUp messagae:
-const PopUpMessage=document.querySelector('#PopUpMessage')
-function showPopUp(message){
-    PopUpMessage.innerHTML=message
-    popUpdiv.classList.add('popUp-active')
-
-    registrationUsername.setAttribute('disabled','')
-    registrationEmail.setAttribute('disabled','')
-    registrationPassword.setAttribute('disabled','')
-    loginEmail.setAttribute('disabled','')
-    loginPassword.setAttribute('disabled','')
-
-}
-
-const popUpcancelBtn=document.querySelector('#popUp-cancel')
-popUpcancelBtn.addEventListener('click', popUpCancel)
-function popUpCancel(){
-    popUpdiv.classList.remove('popUp-active')
-
-    registrationUsername.removeAttribute('disabled','')
-    registrationEmail.removeAttribute('disabled','')
-    registrationPassword.removeAttribute('disabled','')
-
-    loginEmail.removeAttribute('disabled','')
-    loginPassword.removeAttribute('disabled','')
-
-}
-
-// activate deactive website
-const logout=document.querySelector('#logout-btn')
-logout.addEventListener('click', deactivateWebsite)
-
-function activateWebsite(){
-    isLoggedIn=true
-    localStorage.setItem('isLoggedIn',JSON.stringify(isLoggedIn))
-    document.querySelector('body').classList.add('website-active')
-}
-
-function deactivateWebsite(){
-    isLoggedIn=false
-    localStorage.setItem('isLoggedIn',JSON.stringify(isLoggedIn))
-    document.querySelector('body').classList.remove('website-active')
-}
 
 
 // search functionality
@@ -180,7 +125,6 @@ searchBar.addEventListener('input',()=>{
     mainSearchElement.classList.remove('hide')
     searchArr.forEach((val)=>{
         if(val.toUpperCase().includes(inputText)){
-            console.log(val)
             mainSearchElement.innerHTML+=`<div class="search-item">${val}</div>`
         }
     })

@@ -1,22 +1,3 @@
-
-// pop up
-
-// const popUpdiv=document.querySelector('.popUp')
-// const PopUpMessage=document.querySelector('#PopUpMessage')
-// function showPopUp(message){
-//     PopUpMessage.innerHTML=message
-//     popUpdiv.classList.add('popUp-active')
-// }
-
-// const popUpcancelBtn=document.querySelector('#popUp-cancel')
-// popUpcancelBtn.addEventListener('click', popUpCancel)
-// function popUpCancel(){
-//     popUpdiv.classList.remove('popUp-active')
-// }
-
-// pop up ends
-
-
 const dishes=document.querySelector('.dishes')
 
 function generateDishes(){
@@ -27,7 +8,7 @@ function generateDishes(){
                     <img src=${dishesArray[i].img} alt="">
                 </div>
                 <div class="dish-name"> ${dishesArray[i].name}
-
+                    <div class="name-gradient"></div>
                 </div>
                 <div class="action-btn">
                     <button onclick="generateReviewPage(${i})" id="show-reviews">Reviews</button>
@@ -114,19 +95,6 @@ function generateAllReviewInnerHtml(i){
     return allReviewsInnerHtml
 }
 
-
-// send button auto click on enter
-
-// const feedbackElement=document.querySelector('#user-feedback')  // already declared above
-// console.log(feedbackElement)
-// feedbackElement.addEventListener('keypress', handleKeyPress)
-// function handleKeyPress(event) {
-//     console.log("hello")
-//     if (event.key === 'Enter') {
-//       button.click();
-//     }
-// }
-
 function addReview(i){
     let userImage= document.querySelector('#user-image').value
     if (!userImage){
@@ -134,7 +102,7 @@ function addReview(i){
     } 
     const userFeedback=document.querySelector('#user-feedback').value
     if(!userFeedback){
-        alert("Please enter your feedback !")
+        showPopUp("red", "Please enter your feedback !")
         return
     }
     const newReview={
